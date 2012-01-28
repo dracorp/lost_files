@@ -1,0 +1,26 @@
+Lost_files
+
+A Perl script searches for lost files on your system, do not belong to any package.
+
+You can specify:
+* which directories to look for
+* which directories you have to exclude
+* which files you have to exclude
+* which extensions you have to exclude
+
+Usage
+    
+    lost_files.pl [options]
+
+Options
+    -i              - input file with a list of files to analyze. If this script does not support your system can itself generate a list of files. E.g. for Debian:
+        dpkg -L $(dpkg -l | awk '/^[a-z][a-z]\ / {print $2}' 2>/dev/null| tr '\n' ' ') | fgrep -v '/.' > input_file
+    -o              - output_file, by default prints to stdout
+    -t              - show execution time
+    -d              - check also directories not only files
+    -s|--statistics - show statistics i.e.
+                        number of files/directories to analyze,
+                        number of files/directories checked,
+                        time of execution,
+    -h|--help       - show help
+
